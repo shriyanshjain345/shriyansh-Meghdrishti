@@ -1,0 +1,6 @@
+{
+  "name": "MEGHDRISHTI",
+  "description": "Urban Flood Intelligence for India — Real-time rainfall monitoring, interactive flood risk mapping, transparent AI risk assessment, and emergency preparedness.",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

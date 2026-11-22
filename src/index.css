@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #F8FAFC;
+    color: #0F172A;
+    color-scheme: light;
+  }
+
+  html.dark {
+    background-color: #040814;
+    color: #f1f5f9;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Futuristic Weather Glass Surfaces */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+html.dark .glass-panel {
+  background: linear-gradient(155deg, rgba(11, 20, 40, 0.84), rgba(6, 12, 26, 0.88));
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  box-shadow: 0 8px 32px rgba(2, 6, 23, 0.55), inset 0 1px 0 rgba(125, 211, 252, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-panel-elevated {
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+html.dark .glass-panel-elevated {
+  background: linear-gradient(160deg, rgba(13, 24, 48, 0.92), rgba(7, 13, 29, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.65), 0 0 24px rgba(14, 165, 233, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Custom sleek scrollbars for Light and Midnight Navy modes */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #040814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .flip-card-perspective:hover .flip-card-inner:not(.is-flipped) {
+    transform: none !important;
+  }
+  .tactile-card:hover {
+    transform: none !important;
+  }
+  .spotlight-surface::before {
+    display: none !important;
+  }
+}
+
+/* ================= ATMOSPHERIC WEATHER & SCANNER KEYFRAMES ================= */
+
+@keyframes rain-streak {
+  0% {
+    transform: translateY(-25%) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.55;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(130%) translateX(-18px);
+    opacity: 0;
+  }
+}
+
+.weather-rain-streak {
+  animation: rain-streak linear infinite;
+}
+
+@keyframes cloud-drift {
+  0%, 100% {
+    transform: translateX(-3%) translateY(0);
+  }
+  50% {
+    transform: translateX(4%) translateY(-4px);
+  }
+}
+
+.weather-cloud-drift {
+  animation: cloud-drift 14s ease-in-out infinite;
+}
+
+@keyframes lightning-flash {
+  0%, 91%, 94%, 97%, 100% {
+    opacity: 0;
+  }
+  92%, 95.5% {
+    opacity: 0.24;
+  }
+}
+
+.weather-lightning-flash {
+  animation: lightning-flash 7.5s ease-in-out infinite;
+}
+
+@keyframes sun-aura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.68;
+  }
+}
+
+.weather-sun-aura {
+  animation: sun-aura 6s ease-in-out infinite;
+}
+
+@keyframes scanner-sweep {
+  0% {
+    transform: translateY(0%);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0.25;
+  }
+}
+
+.scanner-beam {
+  animation: scanner-sweep 2.2s ease-in-out infinite alternate;
+}
+
+/* ================= TACTILE & MOTION UTILITIES (GPU-ACCELERATED) ================= */
+
+/* 3D Flip Card */
+.flip-card-perspective {
+  perspective: 1100px;
+}
+
+.flip-card-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  transform-style: preserve-3d;
+  transition: transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card-perspective:hover .flip-card-inner:not(.is-flipped) {
+    transform: rotateY(4deg) rotateX(1.5deg);
+  }
+}
+
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-face {
+  grid-column: 1;
+  grid-row: 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  min-width: 0;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Cursor-tracking radial spotlight glow */
+.spotlight-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  background: radial-gradient(
+    320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(2, 132, 199, 0.095),
+    rgba(37, 99, 235, 0.04) 42%,
+    transparent 74%
+  );
+  z-index: 1;
+}
+
+html.dark .spotlight-surface::before {
+  background: radial-gradient(
+    340px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(34, 211, 238, 0.14),
+    rgba(99, 102, 241, 0.07) 42%,
+    transparent 74%
+  );
+}
+
+.spotlight-surface:hover::before {
+  opacity: 1;
+}
+
+.spotlight-surface > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tactile card lift & pressable controls */
+.tactile-card {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease;
+}
+
+.tactile-card:hover {
+  transform: translateY(-3px);
+}
+
+.tactile-btn {
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.tactile-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.78;
+  }
+  70% {
+    transform: scale(2.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.25);
+    opacity: 0;
+  }
+}
+
+.radar-ring {
+  animation: radar-pulse 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: center;
+}
+
+@keyframes check-pop {
+  0% {
+    transform: scale(0.86);
+  }
+  55% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-check-pop {
+  animation: check-pop 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animated-strike {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 54%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 280ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms ease;
+}
+
+.animated-strike.is-checked {
+  background-size: 100% 1.5px;
+}

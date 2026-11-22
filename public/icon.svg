@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="bgGrad" cx="35%" cy="22%" r="85%">
+      <stop offset="0%" stop-color="#0F234B"/>
+      <stop offset="55%" stop-color="#071128"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+
+    <linearGradient id="rimGrad" x1="40" y1="32" x2="472" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#2563EB" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <linearGradient id="radarArcGrad" x1="140" y1="90" x2="372" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="52%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+
+    <linearGradient id="cloudFillGrad" x1="100" y1="150" x2="412" y2="314" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.94"/>
+      <stop offset="55%" stop-color="#0284C7" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="cloudStrokeGrad" x1="98" y1="150" x2="414" y2="314" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="55%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+
+    <linearGradient id="dropFillGrad" x1="256" y1="204" x2="256" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="52%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+
+    <linearGradient id="dropStrokeGrad" x1="188" y1="220" x2="324" y2="404" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A5F3FC"/>
+      <stop offset="60%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App Icon Squircle Backdrop -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)"/>
+  <rect x="10" y="10" width="492" height="492" rx="106" stroke="url(#rimGrad)" stroke-width="4"/>
+
+  <!-- Subtle AI / Radar Signal Waves -->
+  <path d="M142 128C174 93 213 76 256 76C299 76 338 93 370 128" stroke="url(#radarArcGrad)" stroke-width="11" stroke-linecap="round" stroke-opacity="0.5"/>
+  <path d="M178 158C201 134 227 122 256 122C285 122 311 134 334 158" stroke="url(#radarArcGrad)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Minimalist Symmetric Cloud Silhouette -->
+  <path d="M156 314C120 314 98 290 98 258C98 228 122 204 156 202C172 164 210 148 256 148C302 148 340 164 356 202C390 204 414 228 414 258C414 290 392 314 356 314H156Z" fill="url(#cloudFillGrad)" stroke="url(#cloudStrokeGrad)" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- Negative-Space Interlock Halo -->
+  <path d="M256 204C256 204 188 286 188 342C188 379.5 218.5 410 256 410C293.5 410 324 379.5 324 342C324 286 256 204 256 204Z" fill="#060E22" stroke="#060E22" stroke-width="22" stroke-linejoin="round"/>
+
+  <!-- Futuristic Water Droplet -->
+  <path d="M256 204C256 204 188 286 188 342C188 379.5 218.5 410 256 410C293.5 410 324 379.5 324 342C324 286 256 204 256 204Z" fill="url(#dropFillGrad)" stroke="url(#dropStrokeGrad)" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- Subtle AI Vision / Radar Iris inside Droplet -->
+  <path d="M223 331C230 315 242 306 256 306C270 306 282 315 289 331" stroke="#E0F2FE" stroke-width="7" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M229 361C236 371 246 376 256 376C266 376 276 371 283 361" stroke="#DDD6FE" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  <circle cx="256" cy="341" r="13" fill="#F8FAFC"/>
+  <circle cx="256" cy="341" r="22" stroke="#A5F3FC" stroke-opacity="0.48" stroke-width="3"/>
+</svg>
