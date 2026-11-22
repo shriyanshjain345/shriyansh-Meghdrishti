@@ -6,8 +6,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI, ThinkingLevel, Type } from '@google/genai';
-import { CITY_MAP, CITIES, HISTORICAL_FLOOD_EVENTS } from './src/data/cities.ts';
-import { computeFloodRisk, computeDrainageCapacityPct, classifyRisk } from './src/lib/riskModel.ts';
+import { CITY_MAP, CITIES, HISTORICAL_FLOOD_EVENTS } from '../src/data/cities.js';
+import { computeFloodRisk, computeDrainageCapacityPct, classifyRisk } from '../src/lib/riskModel.js';
 import type {
   AiRiskAssessmentPayload,
   AiWeatherSummaryPayload,
@@ -31,7 +31,7 @@ import type {
   RadarFramesResponse,
   ReliefCategory,
   ReliefPlace,
-} from './src/types/flood.ts';
+} from '../src/types/flood.js';
 
 dotenv.config();
 
