@@ -2799,28 +2799,33 @@ STRICT SCIENTIFIC HONESTY RULES:
     }
   });
 
-  // Vite integration (dev) or static dist serving (prod)
-  if (process.env.NODE_ENV !== 'production') {
+  // Export a configured Express app for Vercel Serverless Functions
+async function createApp() {
+  if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
     });
     app.use(vite.middlewares);
-  } else {
+  } else if (!process.env.VERCEL) {
     const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
     app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
+  return app;
+}
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`MEGHDRISHTI server listening on http://0.0.0.0:${PORT}`);
+const appPromise = createApp();
+
+if (!process.env.VERCEL) {
+  appPromise.then((readyApp) => {
+    readyApp.listen(PORT, '0.0.0.0', () => {
+      console.log(`MEGHDRISHTI server listening on http://0.0.0.0:${PORT}`);
+    });
   });
 }
 
-startServer().catch((err) => {
-  console.error('Failed to start MEGHDRISHTI server:', err);
-  process.exit(1);
-});
+export default appPromise;
