@@ -1,13 +1,5 @@
 
 
-import type { Request, Response } from 'express';
-import appPromise from '../server.js';
-
-export default async function handler(req: Request, res: Response) {
-  const app = await appPromise;
-  return app(req, res);
-}
-
 import express from 'express';
 import type { Request, Response } from 'express';
 import dotenv from 'dotenv';
